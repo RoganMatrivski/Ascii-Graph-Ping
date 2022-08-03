@@ -1,8 +1,21 @@
 [package]
-name = "hello_remote_world"
+edition = "2021"
+name = "asciigraphping"
 version = "0.1.0"
 authors = ["VS Code <vscode@microsoft.com>"]
 
-[lib]
-path ="./src/lib/lib.rs"
+[dependencies]
+rasciigraph = "0.1.1"
+fastping-rs = "0.2"
+tokio = { version = "1", features = ["rt", "macros", "rt-multi-thread"] }
+arraydeque = "0.4"
+tokio-icmp-echo = "0.4.1"
+tokio-stream = "0.1"
+terminal_size = "0.2.1"
+yata = "0.6.1"
 
+[profile.release]
+strip = true      # Automatically strip symbols from the binary.
+opt-level = 3     # Optimize for speed.
+lto = true
+codegen-units = 1

@@ -1,4 +1,3 @@
-
 {
     "version": "0.2.0",
     "configurations": [
@@ -6,6 +5,9 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug executable",
+            // "preRunCommands": [
+            //     "sudo setcap cap_net_raw=eip target/debug/hello_remote_world"
+            // ],
             "cargo": {
                 "args": [
                     "build",
