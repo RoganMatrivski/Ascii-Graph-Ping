@@ -7,7 +7,6 @@ use crossterm::{
 };
 use std::io::{stdout, Write};
 
-use crossterm;
 use rasciigraph::plot;
 
 pub async fn run(mut rx: Receiver<Vec<u128>>, config_rx: tokio::sync::watch::Receiver<AppConfig>) {
