@@ -4,6 +4,9 @@ use tokio::{sync::mpsc::Sender, time::Instant};
 
 use std::time::Duration;
 
+#[cfg(target_os = "linux")]
+use tokio_stream::StreamExt;
+
 #[cfg(target_os = "windows")]
 pub async fn pinger(
     ip: std::net::IpAddr,
@@ -40,7 +43,7 @@ pub async fn pinger(
     }
 }
 
-#[cfg(target_os = "unix")]
+#[cfg(target_os = "linux")]
 pub async fn pinger(
     ip: std::net::IpAddr,
     ip_id: usize,
@@ -49,7 +52,7 @@ pub async fn pinger(
 ) {
     let pinger = tokio_icmp_echo::Pinger::new().await.unwrap();
     let mut stream = pinger.chain(ip).stream();
-    let delay_time = Duration::from_millis(DELAY_TIME_MILLIS);
+    let delay_time = Duration::from_millis(consts::DELAY_TIME_MILLIS);
     let mut next_wait = start_time + delay_time;
 
     let mut seq: usize = 0;
