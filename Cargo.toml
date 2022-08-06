@@ -18,6 +18,8 @@ arraydeque = "0.4"
 tokio-stream = "0.1"
 terminal_size = "0.2.1"
 yata = "0.6.1"
+crossterm = "0.24.0"
+
 
 [profile.release]
 strip = true      # Automatically strip symbols from the binary.
